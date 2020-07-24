@@ -14,16 +14,36 @@
             <div class="progress">
                 <div class="filled"></div>
             </div>
-            <input type="button">||</input>
-            <input data-type="-15" type="range"></input>
-            <input data-type="15" type="range"></input>
+            <button class="playButton" >|| </button>
+            <button data-type="-15" class="scroll playButton" > « -15</button>
+            <button data-type="15" class="scroll playButton">15  »</button>
         </div>
     </div>
 </body>
 <style>
-
+    .buttons{
+        display: flex;
+        
+    }
+    .playButton{
+       border:1px solid rgba(128, 128, 128, 0.26);
+        background:none;
+        margin: 10px;
+   
+        cursor: pointer;
+    }
+    
 </style>
 <script>
-    
+    const player=document.querySelector(".player");
+    const playButton=player.querySelector(".playButton");
+   
+    const scrolls=player.querySelectorAll(".scroll");
+    scrolls.forEach(scroll => {
+        scroll.addEventListener("change",scrollChange);
+    });
+    function scrollChange(){
+
+    }
 </script>
 </html>
