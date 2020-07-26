@@ -14,7 +14,7 @@
             <div class="progress">
                 <div class="filled"></div>
             </div>
-            <button class="playButton" >|| </button>
+            <button class="playButton play" >> </button>
             <button data-type="-15" class="scroll playButton" > « -15</button>
             <button data-type="15" class="scroll playButton">15  »</button>
         </div>
@@ -36,14 +36,29 @@
 </style>
 <script>
     const player=document.querySelector(".player");
-    const playButton=player.querySelector(".playButton");
-   
+    const playButton=player.querySelector(".play");
+    playButton.addEventListener('click',play);
     const scrolls=player.querySelectorAll(".scroll");
     scrolls.forEach(scroll => {
-        scroll.addEventListener("change",scrollChange);
+        scroll.addEventListener("click",scrollChange);
     });
+    const video=player.querySelector('video');
+    video.addEventListener('click',play);
+    function play(){
+        
+        if(video.paused)
+            {
+                video.play();
+                playButton.textContent="||";
+            } 
+        else
+            {
+                video.pause();
+                playButton.textContent=">";
+            }
+    }
     function scrollChange(){
-
+        video.currentTime += parseFloat(this.dataset.type);
     }
 </script>
 </html>
